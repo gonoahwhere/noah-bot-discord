@@ -15,7 +15,7 @@ module.exports = {
         function localDate() {
         
             let local = DateTime.local(); //initialize luxon Date-Object
-            let rezonedString = local.setZone("Europe/London").toString(); //set timezone of Date-Object and convert to string
+            let rezonedString = local.setZone("Europe/London") //set timezone of Date-Object and convert to string
             var dateString = rezonedString.slice(0, -10) + "z"; //trim string to create default JavaScript Date-OBject
             var today = new Date(dateString); //convert dateString to JS Date-Object
         
@@ -39,8 +39,8 @@ module.exports = {
             { name: '➳ Edition', value: '`1.0.0`', inline: true },
             { name: '➳ Copies', value: `\`${bot.guilds.cache.size}\``, inline: true },
             { name: '➳ Parts', value: `\`${bot.commands.size}\``, inline: true},
-            { name: '➳ Pong', value: `${bot.ws.ping}ms`, inline: true},
-            { name: '➳ Clock', value: `${today}`, inline: true}
+            { name: '➳ Pong', value: `\`${bot.ws.ping}ms\``, inline: true},
+            { name: '➳ Clock', value: `\`${today}\``, inline: true}
         )
         .setThumbnail(bot.user.displayAvatarURL())
         .setColor(bot.config.embedColor)
