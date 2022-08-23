@@ -19,7 +19,7 @@ module.exports = {
         .setDescription('∘∘∘ Beep Boop. I am the droid version of sir noah ∘∘∘')
         .addFields(
             { name: '➳ Day Assembled', value: '`15th Dec 2021`', inline: true },
-            { name: '➳ Master / Developer', value: '`Noah💙#6336`', inline: true },
+            { name: '➳ Master', value: '`Noah💙#6336`', inline: true },
             //{ name: 'Hatched On', value: '`August 21st, 2022`', inline: true },
             { name: '➳ Lived For', value: `\`${days}d\` \`${hours}h\` \`${minutes}m\` \`${seconds}s\``, inline: true },
             //{ name: 'Servers', value: `\`${bot.guilds.cache.size}\``, inline: true },
