@@ -15,10 +15,9 @@ module.exports = {
 
         const date = new Date();
 
-        let londonDate = date.toLocaleString('en-US', { timeZone: '`Europe/London`' })
+        let londonDate = date.toLocaleString('en-US', { timeZone: 'Europe/London', timeZoneName: 'short', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })
 
         let infoEmbed = new bot.discord.MessageEmbed()
-
         .setAuthor({ name: `◠ Information ◡`, iconURL: bot.user.displayAvatarURL() })
         .setDescription('∘∘∘ Beep Boop. I am the droid version of sir noah ∘∘∘')
         .addFields(
