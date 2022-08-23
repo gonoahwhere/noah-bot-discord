@@ -1,4 +1,5 @@
 const { readdirSync } = require("fs");
+const { DateTime } = require("luxon")
 
 module.exports = {
     name: 'info',
@@ -16,9 +17,11 @@ module.exports = {
         const date = new Date();
         let londonDate = date.toLocaleDateString('en-GB', { timeZone: 'Europe/London'})
         let londonTime = date.toLocaleTimeString('en-GB', { timeZone: 'Europe/London', hourCycle: 'h23'})
+        var local = DateTime.local();
+        var rezoned = local.setZone("Europe/London");
+        let londonShort = rezoned.toLocaleString('en-GB', { timeZone: 'Europe/London', timeZoneName: 'short'})
 
-        //let londonDate = date.toLocaleDateString('en-US', { timeZone: 'Europe/London', timeZoneName: 'short', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })
-
+        //timeZoneName: 'short'
         let infoEmbed = new bot.discord.MessageEmbed()
         .setAuthor({ name: `◠ Information ◡`, iconURL: bot.user.displayAvatarURL() })
         .setDescription('∘∘∘ Beep Boop. I am the droid version of sir noah ∘∘∘')
@@ -31,7 +34,7 @@ module.exports = {
             { name: '➳ Copies', value: `\`${bot.guilds.cache.size}\``, inline: true },
             { name: '➳ Parts', value: `\`${bot.commands.size}\``, inline: true},
             { name: '➳ Pong', value: `\`${bot.ws.ping}ms\``, inline: true},
-            { name: '➳ Clock', value: `\`${londonDate}\`` + " " + `\`${londonTime}\``, inline: true}
+            { name: '➳ Clock', value: `\`${londonDate}\`` + " " + `\`${londonTime}\`` + " " + `\`${londonShort}\``, inline: true}
         )
         .setThumbnail(bot.user.displayAvatarURL())
         .setColor(bot.config.embedColor)
