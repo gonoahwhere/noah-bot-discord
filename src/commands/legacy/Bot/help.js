@@ -32,14 +32,6 @@ module.exports = {
                 botCommandsList.push(name);
             });
 
-            // Get the commands of a Utility category
-            const utilityCommandsList = [];
-            readdirSync(`${bot.cwd}/src/commands/legacy/Utility`).forEach((file) => {
-                const filen = require(`${bot.cwd}/src/commands/legacy/Utility/${file}`);
-                const name = `\`${filen.name}\``;
-                utilityCommandsList.push(name);
-            });
-
             // This is what it commands when using the command without arguments
             const helpEmbed = new bot.discord.MessageEmbed()
                 .setAuthor(`◠ Mechanic Centre [${bot.commands.size}] ◡`)
