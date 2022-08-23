@@ -14,8 +14,8 @@ module.exports = {
         let seconds = Math.floor(bot.uptime / 1000) % 60;
 
         const date = new Date();
-        let londonDate = date.toLocaleDateString()
-        let londonTime = date.toLocaleTimeString()
+        let londonDate = date.toLocaleDateString('en-GB', { timeZone: 'Europe/London'})
+        let londonTime = date.toLocaleTimeString('en-GB', { timeZone: 'Europe/London', hourCycle: 'h23'})
 
         //let londonDate = date.toLocaleDateString('en-US', { timeZone: 'Europe/London', timeZoneName: 'short', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })
 
