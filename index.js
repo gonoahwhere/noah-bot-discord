@@ -51,8 +51,5 @@ process.on("unhandledRejection", (reason, promise) => {
     console.error("[FATAL] Possibly Unhandled Rejection at: Promise", promise, "\nreason:", reason.message);
 });
 
-//bot.api.application?.commands.set([])
-bot.application?.commands.delete().then(console.log("I have deleted all possible slash commands."))
-
 // Login Discord Bot Token
 bot.login(process.env.token);
