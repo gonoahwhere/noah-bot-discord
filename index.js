@@ -53,7 +53,7 @@ process.on("unhandledRejection", (reason, promise) => {
 
 //bot.application?.commands.set([])
 
-bot.api.applications(bot.user.id).commands.post({
+bot.api.applications(bot.user?.id).commands.post({
     data: {
       name: "commandname",
       description: "Command Description",
