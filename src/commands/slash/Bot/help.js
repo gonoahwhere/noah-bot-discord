@@ -42,7 +42,7 @@ module.exports = {
 
             // This is what it commands when using the command without arguments
             const helpEmbed = new bot.discord.MessageEmbed()
-                .setAuthor(`◠ Mechanic Centre [${bot.commands.size}] ◡`)
+                .setAuthor({ name: `◠ Mechanic Centre [${bot.commands.size}] ◡`})
                 .setDescription(`∘∘∘ Beep Boop. Droid of sir noah at your service. How may I help you? ∘∘∘`)
                 .addFields(
                     { name: '➳ Bot Parts', value: botCommandsList.map((data) => `${data}`).join(", "), inline: true }

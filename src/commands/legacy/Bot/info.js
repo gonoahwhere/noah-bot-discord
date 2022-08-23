@@ -20,11 +20,10 @@ module.exports = {
         .addFields(
             { name: '➳ Assembled', value: '`15th Dec 2021`', inline: true },
             { name: '➳ Master', value: '`Noah💙#6336`', inline: true },
-            //{ name: 'Hatched On', value: '`August 21st, 2022`', inline: true },
             { name: '➳ Lived For', value: `\`${days}d\` \`${hours}h\` \`${minutes}m\` \`${seconds}s\``, inline: true },
-            //{ name: 'Servers', value: `\`${bot.guilds.cache.size}\``, inline: true },
-            //{ name: 'Users', value: `\`${bot.users.cache.size}\``, inline: true },
-            //{ name: 'Version', value: '`1.0.1-beta`', inline: true }
+            { name: '➳ Workers', value: `\`${bot.users.cache.size}\``, inline: true },
+            { name: '➳ Edition', value: '`1.0.0`', inline: true },
+            { name: '➳ Copies', value: `\`${bot.guilds.cache.size}\``, inline: true }
         )
         .setThumbnail(bot.user.displayAvatarURL())
         .setColor(bot.config.embedColor)
