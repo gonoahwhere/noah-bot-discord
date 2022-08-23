@@ -1,5 +1,6 @@
 const emotes = require("discord-emotes")
-const db = require("quick.db")
+const { QuickDB } = require('quick.db');
+const db = new QuickDB();
 const { getHugCooldown, setHugCooldown } = require("../../../utils/functions.js")
 
 module.exports = {
