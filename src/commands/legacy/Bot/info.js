@@ -21,7 +21,7 @@ module.exports = {
             { name: '➳ Day Assembled', value: '`15th Dec 2021`', inline: true },
             { name: '➳ Master / Developer', value: '`Noah💙#6336`', inline: true },
             //{ name: 'Hatched On', value: '`August 21st, 2022`', inline: true },
-            //{ name: 'Uptime', value: `\`${days}d\` \`${hours}h\` \`${minutes}m\` \`${seconds}s\``, inline: true },
+            { name: '➳ Lived For', value: `\`${days}d\` \`${hours}h\` \`${minutes}m\` \`${seconds}s\``, inline: true },
             //{ name: 'Servers', value: `\`${bot.guilds.cache.size}\``, inline: true },
             //{ name: 'Users', value: `\`${bot.users.cache.size}\``, inline: true },
             //{ name: 'Version', value: '`1.0.1-beta`', inline: true }

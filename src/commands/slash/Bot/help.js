@@ -42,14 +42,14 @@ module.exports = {
 
             // This is what it commands when using the command without arguments
             const helpEmbed = new bot.discord.MessageEmbed()
-                .setTitle(`Hissssss... Let me help you!`)
-                .setDescription(` Hello **<@${interaction.member.id}>**, I am the droid version of sir noah...  \nYou can use \`/help command>\` to see more info about about a certain slash command!\n**Total Commands:** ${bot.commands.size}\n**Total Slash Commands:** ${bot.slash.size}`)
+                .setTitle(`◠ Mechanic Centre [${bot.commands.size}] ◡`)
+                .setDescription(`∘∘∘ Beep Boop. Droid of sir noah at your service. How may I help you? ∘∘∘`)
                 .addFields(
-                    { name: 'Default', value: botCommandsList.map((data) => `${data}`).join(", "), inline: true }
+                    { name: 'Parts', value: botCommandsList.map((data) => `${data}`).join(", "), inline: true }
                 )
                 .setColor(bot.config.embedColor)
                 .setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` });
-
+            
             interaction.reply({ embeds: [helpEmbed], components: [row] });
         } else {
             const command = bot.slash.get(commandInt.toLowerCase());
