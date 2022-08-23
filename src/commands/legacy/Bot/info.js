@@ -15,7 +15,7 @@ module.exports = {
 
         const date = new Date();
 
-        let londonDate = date.toLocaleString('`en-US`', { timeZone: 'Europe/London' })
+        let londonDate = date.toLocaleString('en-US', { timeZone: 'Europe/London' })
 
         let infoEmbed = new bot.discord.MessageEmbed()
 
