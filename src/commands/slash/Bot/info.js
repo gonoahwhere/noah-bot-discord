@@ -14,16 +14,12 @@ module.exports = {
         function changeTimeZone(date, timeZone) {
             if (typeof date === 'string') {
               return new Date(
-                new Date(date).toLocaleString('en-US', {
-                  timeZone,
-                }),
+                new Date(date).toLocaleString('en-US'),
               );
             }
           
             return new Date(
-              date.toLocaleString('en-US', {
-                timeZone,
-              }),
+              date.toLocaleString('en-US'),
             );
         }
         const londonDate = changeTimeZone(new Date(), 'Europe/London');
