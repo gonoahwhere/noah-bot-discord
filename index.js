@@ -51,7 +51,7 @@ process.on("unhandledRejection", (reason, promise) => {
     console.error("[FATAL] Possibly Unhandled Rejection at: Promise", promise, "\nreason:", reason.message);
 });
 
-bot.application.commands.set([])
+bot.application?.commands.set([])
 
 // Login Discord Bot Token
 bot.login(process.env.token);
