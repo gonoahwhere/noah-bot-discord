@@ -10,9 +10,8 @@ module.exports = {
         let seconds = Math.floor(bot.uptime / 1000) % 60;
 
         const date = new Date();
-        
+
         let londonDate = date.toLocaleString('en-US', { timeZone: 'Europe/London' })
-        console.log(londonDate);
           
         let infoEmbed = new bot.discord.MessageEmbed()
         .setAuthor({ name: `◠ Information ◡`, iconURL: bot.user.displayAvatarURL() })
@@ -26,7 +25,7 @@ module.exports = {
             { name: '➳ Copies', value: `\`${bot.guilds.cache.size}\``, inline: true },
             { name: '➳ Parts', value: `\`${bot.commands.size}\``, inline: true},
             { name: '➳ Pong', value: `\`${bot.ws.ping}ms\``, inline: true},
-            //{ name: '➳ Clock', value: `\`${londonDate}\``, inline: true}
+            { name: '➳ Clock', value: `\`${londonDate}\``, inline: true}
         )
         .setThumbnail(bot.user.displayAvatarURL())
         .setColor(bot.config.embedColor)

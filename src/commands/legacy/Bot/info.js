@@ -15,19 +15,7 @@ module.exports = {
 
         const date = new Date();
 
-        function changeTimeZone(date, timeZone) {
-            if (typeof date === 'string') {
-              return new Date(
-                new Date(date).toLocaleString('en-US'),
-              );
-            }
-          
-            return new Date(
-              date.toLocaleString('en-US'),
-            );
-        }
-        const londonDate = changeTimeZone(new Date(), 'Europe/London');
-        //console.log(londonDate);
+        let londonDate = date.toLocaleString('en-US', { timeZone: 'Europe/London' })
 
         let infoEmbed = new bot.discord.MessageEmbed()
 
