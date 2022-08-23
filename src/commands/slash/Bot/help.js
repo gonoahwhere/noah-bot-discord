@@ -45,7 +45,7 @@ module.exports = {
                 .setTitle(`◠ Mechanic Centre [${bot.commands.size}] ◡`)
                 .setDescription(`∘∘∘ Beep Boop. Droid of sir noah at your service. How may I help you? ∘∘∘`)
                 .addFields(
-                    { name: 'Parts', value: botCommandsList.map((data) => `${data}`).join(", "), inline: true }
+                    { name: '➳ Parts', value: botCommandsList.map((data) => `${data}`).join(", "), inline: true }
                 )
                 .setColor(bot.config.embedColor)
                 .setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` });
