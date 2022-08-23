@@ -18,7 +18,7 @@ module.exports = {
         let londonDate = date.toLocaleDateString('en-GB', { timeZone: 'Europe/London'})
         let londonTime = date.toLocaleTimeString('en-GB', { timeZone: 'Europe/London', hourCycle: 'h23'})
         var local = DateTime.local();
-        var rezoned = local.setZone("Europe/London", { timeZoneName: 'short' });
+        var rezoned = local.setZone("Europe/London", { timeZoneName: 'short' }).toString();
         let londonShort = rezoned
 
         //timeZoneName: 'short'
