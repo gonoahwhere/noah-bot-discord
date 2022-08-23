@@ -1,3 +1,4 @@
+const {MessageEmbed} = require("discord.js")
 const db = require("quick.db")
 
 // db.fetch()
