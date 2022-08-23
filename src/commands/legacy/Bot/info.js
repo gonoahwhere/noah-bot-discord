@@ -14,12 +14,14 @@ module.exports = {
         let seconds = Math.floor(bot.uptime / 1000) % 60;
 
         let infoEmbed = new bot.discord.MessageEmbed()
+
         .setAuthor({ name: `◠ Information [${bot.commands.size}] ◡`, iconURL: bot.user.displayAvatarURL() })
         .setDescription('Beep Boop. I am the droid version of sir noah.')
         .addFields(
-            { name: 'Owner / Developer', value: '`Noah💙#6336`', inline: true },
+            { name: 'Day Assembled', value: `${bot.user.createdAt}`, inline: true },
+            //{ name: 'Owner / Developer', value: '`Noah💙#6336`', inline: true },
             //{ name: 'Hatched On', value: '`August 21st, 2022`', inline: true },
-            { name: 'Uptime', value: `\`${days}d\` \`${hours}h\` \`${minutes}m\` \`${seconds}s\``, inline: true },
+            //{ name: 'Uptime', value: `\`${days}d\` \`${hours}h\` \`${minutes}m\` \`${seconds}s\``, inline: true },
             //{ name: 'Servers', value: `\`${bot.guilds.cache.size}\``, inline: true },
             //{ name: 'Users', value: `\`${bot.users.cache.size}\``, inline: true },
             //{ name: 'Version', value: '`1.0.1-beta`', inline: true }
