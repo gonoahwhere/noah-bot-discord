@@ -1,6 +1,3 @@
-const { DateTime } = require('luxon');
-
-
 module.exports = {
     name: "info",
     category: "Bot",
@@ -12,24 +9,26 @@ module.exports = {
         let minutes = Math.floor(bot.uptime / 60000) % 60;
         let seconds = Math.floor(bot.uptime / 1000) % 60;
 
-        /*function localDate() {
-        
-            let local = DateTime.local(); //initialize luxon Date-Object
-            let rezonedString = local.setZone("Europe/London").toString(); //set timezone of Date-Object and convert to string
-            var dateString = rezonedString.slice(0, -10) + "z"; //trim string to create default JavaScript Date-OBject
-            var today = new Date(dateString); //convert dateString to JS Date-Object
-        
-            //fix Month index
-            today.setMonth(today.getMonth() + 1);
-            return today;
-        
+        const date = new Date();
+
+        function changeTimeZone(date, timeZone) {
+            if (typeof date === 'string') {
+              return new Date(
+                new Date(date).toLocaleString('en-US', {
+                  timeZone,
+                }),
+              );
+            }
+          
+            return new Date(
+              date.toLocaleString('en-US', {
+                timeZone,
+              }),
+            );
         }
-        
-        //set variable today to localDate in NZ
-        var today = localDate();*/
-        
-        var local = DateTime.local();
-        var rezoned = local.setZone("Pacific/Auckland");
+        const londonDate = changeTimeZone(new Date(), 'Europe/London');
+        //console.log(londonDate);
+          
         let infoEmbed = new bot.discord.MessageEmbed()
         .setAuthor({ name: `◠ Information ◡`, iconURL: bot.user.displayAvatarURL() })
         .setDescription('∘∘∘ Beep Boop. I am the droid version of sir noah ∘∘∘')
@@ -42,7 +41,7 @@ module.exports = {
             { name: '➳ Copies', value: `\`${bot.guilds.cache.size}\``, inline: true },
             { name: '➳ Parts', value: `\`${bot.commands.size}\``, inline: true},
             { name: '➳ Pong', value: `\`${bot.ws.ping}ms\``, inline: true},
-            { name: '➳ Clock', value: `\`${local}\``, inline: true}
+            { name: '➳ Clock', value: `\`${londonDate}\``, inline: true}
         )
         .setThumbnail(bot.user.displayAvatarURL())
         .setColor(bot.config.embedColor)
