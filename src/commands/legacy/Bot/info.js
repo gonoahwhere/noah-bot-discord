@@ -15,7 +15,7 @@ module.exports = {
 
         let infoEmbed = new bot.discord.MessageEmbed()
 
-        .setAuthor({ name: `◠ Information [${bot.commands.size}] ◡`, iconURL: bot.user.displayAvatarURL() })
+        .setAuthor({ name: `◠ Information ◡`, iconURL: bot.user.displayAvatarURL() })
         .setDescription('∘∘∘ Beep Boop. I am the droid version of sir noah ∘∘∘')
         .addFields(
             { name: '➳ Assembled', value: '`15th Dec 2021`', inline: true },
@@ -23,7 +23,8 @@ module.exports = {
             { name: '➳ Lived For', value: `\`${days}d\` \`${hours}h\` \`${minutes}m\` \`${seconds}s\``, inline: true },
             { name: '➳ Workers', value: `\`${bot.users.cache.size}\``, inline: true },
             { name: '➳ Edition', value: '`1.0.0`', inline: true },
-            { name: '➳ Copies', value: `\`${bot.guilds.cache.size}\``, inline: true }
+            { name: '➳ Copies', value: `\`${bot.guilds.cache.size}\``, inline: true },
+            { name: '➳ Parts', value: `\`${bot.commands.size}\``, inline: true}
         )
         .setThumbnail(bot.user.displayAvatarURL())
         .setColor(bot.config.embedColor)
