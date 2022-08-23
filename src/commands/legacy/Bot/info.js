@@ -19,7 +19,7 @@ module.exports = {
         let londonTime = date.toLocaleTimeString('en-GB', { timeZone: 'Europe/London', hourCycle: 'h23'})
         var local = DateTime.local();
         var rezoned = local.setZone("Europe/London");
-        let londonShort = rezoned.toLocaleString({ timeZone: 'Europe/London', timeZoneName: 'short'})
+        let londonShort = rezoned.toLocaleString({timeZoneName: 'short'})
 
         //timeZoneName: 'short'
         let infoEmbed = new bot.discord.MessageEmbed()
