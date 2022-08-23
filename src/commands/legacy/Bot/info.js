@@ -13,9 +13,9 @@ module.exports = {
         let minutes = Math.floor(bot.uptime / 60000) % 60;
         let seconds = Math.floor(bot.uptime / 1000) % 60;
 
-        const date = new Date();
+        const date = `\`${new Date()}\``;
         
-        let londonDate = date.toLocaleString('en-US')
+        let londonDate = date.toLocaleString('en-US', { timeZone: 'Europe/London', timeZoneName: 'short', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })
 
         let infoEmbed = new bot.discord.MessageEmbed()
         .setAuthor({ name: `◠ Information ◡`, iconURL: bot.user.displayAvatarURL() })
