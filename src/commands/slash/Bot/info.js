@@ -23,7 +23,7 @@ module.exports = {
             );
         }
         const londonDate = changeTimeZone(new Date(), 'Europe/London');
-        //console.log(londonDate);
+        console.log(londonDate);
           
         let infoEmbed = new bot.discord.MessageEmbed()
         .setAuthor({ name: `◠ Information ◡`, iconURL: bot.user.displayAvatarURL() })
