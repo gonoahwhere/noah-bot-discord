@@ -91,10 +91,9 @@ const loadSlashCommands = async function (bot) {
         //    .get("YOUR_GUILD_ID")
         //    .commands.set(slash);
 
-        console.log('Deleted Slash Commands for all the guilds.');
-        //await bot.application.commands.set(slash)
-        bot.application.commands.set([])
-
+        console.log('Registered Slash Commands for all the guilds.');
+        await bot.application.commands.set(slash)
+        
     })
 }
 
