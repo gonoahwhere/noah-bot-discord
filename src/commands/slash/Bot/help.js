@@ -42,7 +42,7 @@ module.exports = {
 
             // This is what it commands when using the command without arguments
             const helpEmbed = new bot.discord.MessageEmbed()
-                .setTitle(`◠ Mechanic Centre [${bot.commands.size}] ◡`)
+                .setAuthor(`◠ Mechanic Centre [${bot.commands.size}] ◡`)
                 .setDescription(`∘∘∘ Beep Boop. Droid of sir noah at your service. How may I help you? ∘∘∘`)
                 .addFields(
                     { name: '➳ Parts', value: botCommandsList.map((data) => `${data}`).join(", "), inline: true }
@@ -65,7 +65,7 @@ module.exports = {
                 let category = command.category || "No category provided!"
 
                 let helpCmdEmbed = new bot.discord.MessageEmbed()
-                    .setTitle(`${bot.user.username} Help | \`${(name.toLocaleString())}\` Slash Command`)
+                    .setAuthor(`${bot.user.username} Help | \`${(name.toLocaleString())}\` Slash Command`)
                     .addFields(
                         { name: "Description", value: `${description}` },
                         { name: "Usage", value: `${usage}` },
