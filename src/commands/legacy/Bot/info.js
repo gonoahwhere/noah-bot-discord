@@ -16,9 +16,9 @@ module.exports = {
         let infoEmbed = new bot.discord.MessageEmbed()
 
         .setAuthor({ name: `◠ Information [${bot.commands.size}] ◡`, iconURL: bot.user.displayAvatarURL() })
-        .setDescription('Beep Boop. I am the droid version of sir noah.')
+        .setDescription('∘∘∘ Beep Boop. I am the droid version of sir noah ∘∘∘')
         .addFields(
-            { name: 'Day Assembled', value: `${bot.user.createdAt}`, inline: true },
+            { name: '➳ Day Assembled', value: '`15th Dec 2021`', inline: true },
             //{ name: 'Owner / Developer', value: '`Noah💙#6336`', inline: true },
             //{ name: 'Hatched On', value: '`August 21st, 2022`', inline: true },
             //{ name: 'Uptime', value: `\`${days}d\` \`${hours}h\` \`${minutes}m\` \`${seconds}s\``, inline: true },
