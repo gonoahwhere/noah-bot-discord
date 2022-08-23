@@ -14,7 +14,7 @@ module.exports = {
         let seconds = Math.floor(bot.uptime / 1000) % 60;
 
         let infoEmbed = new bot.discord.MessageEmbed()
-        .setAuthor({ name: `◠ Information [${bot.commands.cache.size}] ◡`, iconURL: bot.user.displayAvatarURL() })
+        .setAuthor({ name: `◠ Information [${bot.commands.size}] ◡`, iconURL: bot.user.displayAvatarURL() })
         .setDescription('Beep Boop. I am the droid version of sir noah.')
         .addFields(
             { name: 'Owner / Developer', value: '`Noah💙#6336`', inline: true },
