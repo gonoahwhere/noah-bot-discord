@@ -12,10 +12,10 @@ module.exports = {
         let minutes = Math.floor(bot.uptime / 60000) % 60;
         let seconds = Math.floor(bot.uptime / 1000) % 60;
 
-        function localDate() {
+        /*function localDate() {
         
             let local = DateTime.local(); //initialize luxon Date-Object
-            let rezonedString = local.setZone("Europe/London") //set timezone of Date-Object and convert to string
+            let rezonedString = local.setZone("Europe/London").toString(); //set timezone of Date-Object and convert to string
             var dateString = rezonedString.slice(0, -10) + "z"; //trim string to create default JavaScript Date-OBject
             var today = new Date(dateString); //convert dateString to JS Date-Object
         
@@ -26,8 +26,10 @@ module.exports = {
         }
         
         //set variable today to localDate in NZ
-        var today = localDate();
-
+        var today = localDate();*/
+        
+        var local = DateTime.local();
+        var rezoned = local.setZone("Pacific/Auckland");
         let infoEmbed = new bot.discord.MessageEmbed()
         .setAuthor({ name: `◠ Information ◡`, iconURL: bot.user.displayAvatarURL() })
         .setDescription('∘∘∘ Beep Boop. I am the droid version of sir noah ∘∘∘')
@@ -40,7 +42,7 @@ module.exports = {
             { name: '➳ Copies', value: `\`${bot.guilds.cache.size}\``, inline: true },
             { name: '➳ Parts', value: `\`${bot.commands.size}\``, inline: true},
             { name: '➳ Pong', value: `\`${bot.ws.ping}ms\``, inline: true},
-            { name: '➳ Clock', value: `\`${today}\``, inline: true}
+            { name: '➳ Clock', value: `\`${local}\``, inline: true}
         )
         .setThumbnail(bot.user.displayAvatarURL())
         .setColor(bot.config.embedColor)
