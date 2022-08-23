@@ -7,7 +7,7 @@ module.exports = {
         if (!interaction.isCommand()) return;
         
         const command = bot.slash.get(interaction.commandName);
-        if (!command) return interaction.reply({ content: 'an Error check console' });
+        if (!command) return interaction.reply({ content: 'There was an error while attempting to process this command.' });
         
         if (command.ownerOnly) {
             if (interaction.user.id !== bot.config.ownerID) {
