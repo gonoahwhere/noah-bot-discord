@@ -44,7 +44,9 @@ module.exports = {
             const helpEmbed = new bot.discord.MessageEmbed()
                 .setTitle(`Hissssss... Let me help you!`)
                 .setDescription(` Hello **<@${interaction.member.id}>**, I am the droid version of sir noah...  \nYou can use \`/help command>\` to see more info about about a certain slash command!\n**Total Commands:** ${bot.commands.size}\n**Total Slash Commands:** ${bot.slash.size}`)
-                .addField("Default", botCommandsList.map((data) => `${data}`).join(", "), true)
+                .addFields(
+                    { name: 'Default', value: botCommandsList.map((data) => `${data}`).join(", "), inline: true }
+                )
                 .setColor(bot.config.embedColor)
                 .setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` });
 
