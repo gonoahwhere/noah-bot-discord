@@ -10,8 +10,12 @@ module.exports = {
         let seconds = Math.floor(bot.uptime / 1000) % 60;
 
         const date = new Date();
-
-        let londonDate = date.toLocaleString('en-US', { timeZone: 'Europe/London' })
+        let londonDate = date.toLocaleDateString('en-GB', { timeZone: 'Europe/London'})
+        let londonTime = date.toLocaleTimeString('en-GB', { timeZone: 'Europe/London', hourCycle: 'h23'})
+        var local = DateTime.local();
+        var rezoned = local.setZone("Europe/London");
+        let londonShortTZ = rezoned.toLocaleString({timeZoneName: 'short'})
+        let londonShort = londonShortTZ.substr(11,16);
           
         let infoEmbed = new bot.discord.MessageEmbed()
         .setAuthor({ name: `◠ Information ◡`, iconURL: bot.user.displayAvatarURL() })
@@ -25,7 +29,7 @@ module.exports = {
             { name: '➳ Copies', value: `\`${bot.guilds.cache.size}\``, inline: true },
             { name: '➳ Parts', value: `\`${bot.commands.size}\``, inline: true},
             { name: '➳ Pong', value: `\`${bot.ws.ping}ms\``, inline: true},
-            { name: '➳ Clock', value: `\`${londonDate}\``, inline: true}
+            { name: '➳ Clock', value: `\`${londonDate}\`` + " " + `\`${londonTime}\`` + " " + `\`${londonShort}\``, inline: true}
         )
         .setThumbnail(bot.user.displayAvatarURL())
         .setColor(bot.config.embedColor)

@@ -12,12 +12,15 @@
     "dependencies": {
         "axios": "^0.21.1",
         "chalk": "^4.1.0",
+        "discord-emotes": "^1.5.4",
         "discord.js": "^13.3.1",
         "dotenv": "^10.0.0",
         "fs": "^0.0.1-security",
         "glob": "^7.2.0",
         "luxon": "^3.0.1",
-        "node-fetch": "^2.6.1"
+        "moment": "^2.29.4",
+        "node-fetch": "^2.6.1",
+        "quick.db": "^9.0.6"
     },
     "repository": {
         "type": "git",

@@ -4,6 +4,7 @@ const { DateTime } = require("luxon")
 module.exports = {
     name: 'info',
     usage: 'n.info',
+    aliases: ["bi", "botinfo"],
     category: 'Bot',
     description: 'Learn more about my mechanics.',
     ownerOnly: false,
