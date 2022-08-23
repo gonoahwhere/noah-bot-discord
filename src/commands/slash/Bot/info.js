@@ -9,6 +9,8 @@ module.exports = {
         let minutes = Math.floor(bot.uptime / 60000) % 60;
         let seconds = Math.floor(bot.uptime / 1000) % 60;
 
+        const date = new Date();
+        
         let londonDate = date.toLocaleString('en-US', { timeZone: 'Europe/London' })
         console.log(londonDate);
           
