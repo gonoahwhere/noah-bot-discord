@@ -20,7 +20,9 @@ module.exports = {
             { name: '➳ Workers', value: `\`${bot.users.cache.size}\``, inline: true },
             { name: '➳ Edition', value: '`1.0.0`', inline: true },
             { name: '➳ Copies', value: `\`${bot.guilds.cache.size}\``, inline: true },
-            { name: '➳ Parts', value: `\`${bot.commands.size}\``, inline: true}
+            { name: '➳ Parts', value: `\`${bot.commands.size}\``, inline: true},
+            { name: '➳ Pong', value: `${bot.ws.ping}ms`, inline: true},
+            { name: '➳ Clock', value: `${Math.floor(msg.createdAt - interaction.createdAt)}ms`, inline: true}
         )
         .setThumbnail(bot.user.displayAvatarURL())
         .setColor(bot.config.embedColor)
