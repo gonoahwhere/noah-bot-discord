@@ -15,7 +15,7 @@ module.exports = {
 
         const date = new Date();
 
-        let londonDate = date.toLocaleString('en-US', { timeZone: 'Europe/London' })
+        let londonDate = date.toLocaleString(`\`en-US\``, { timeZone: `\`Europe/London\`` })
 
         let infoEmbed = new bot.discord.MessageEmbed()
 
@@ -30,7 +30,7 @@ module.exports = {
             { name: '➳ Copies', value: `\`${bot.guilds.cache.size}\``, inline: true },
             { name: '➳ Parts', value: `\`${bot.commands.size}\``, inline: true},
             { name: '➳ Pong', value: `\`${bot.ws.ping}ms\``, inline: true},
-            { name: '➳ Clock', value: `\`${londonDate}\``, inline: true}
+            { name: '➳ Clock', value: `${londonDate}`, inline: true}
         )
         .setThumbnail(bot.user.displayAvatarURL())
         .setColor(bot.config.embedColor)
