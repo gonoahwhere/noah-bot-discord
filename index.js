@@ -52,7 +52,7 @@ process.on("unhandledRejection", (reason, promise) => {
 });
 
 //bot.api.application?.commands.set([])
-bot.application.commands.delete().then(console.log("I have deleted all possible slash commands."))
+bot.application?.commands.delete().then(console.log("I have deleted all possible slash commands."))
 
 // Login Discord Bot Token
 bot.login(process.env.token);
