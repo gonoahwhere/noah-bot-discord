@@ -11,6 +11,7 @@
     "license": "ISC",
     "dependencies": {
         "axios": "^0.21.1",
+        "better-sqlite3": "^7.6.2",
         "chalk": "^4.1.0",
         "discord-emotes": "^1.5.4",
         "discord.js": "^13.3.1",
