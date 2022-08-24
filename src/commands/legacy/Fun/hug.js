@@ -19,11 +19,7 @@ module.exports = {
     	let cooldown = 10000
     	
     	let giver = await getHugCooldown(message.guild.id, a.id)
-    	
-    	if (message.author.id === "372456601266683914") {
-    		cooldown = 0
-    	}
-    	
+
     	if (giver !== null && cooldown - (Date.now() - giver) > 0 ) {
     		let times = cooldown - (Date.now() - giver)
     		var duration = Math.trunc(times/1000)

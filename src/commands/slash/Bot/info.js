@@ -1,3 +1,5 @@
+const { getInfoSlashCooldown, setInfoSlashCooldown } = require("../../../utils/functions.js")
+
 module.exports = {
     name: "info",
     category: "Bot",
@@ -34,7 +36,25 @@ module.exports = {
         .setThumbnail(bot.user.displayAvatarURL())
         .setColor(bot.config.embedColor)
         .setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` });
-
-        await interaction.reply({ allowedMentions: { repliedUser: false }, embeds: [infoEmbed] });
+        
+        let infoSlashCooldown = await getInfoSlashCooldown(interaction.guild?.id, interaction.author?.id);
+        let cooldown = 10000
+        
+        if (infoSlashCooldown !== null && cooldown - (Date.now() - infoSlashCooldown) > 0) {
+            let times = cooldown - (Date.now() - infoSlashCooldown)
+            var duration = Math.trunc(times/1000)
+            var secs = duration%60
+            var duration = Math.trunc(duration/60)
+            var mins = duration%60
+            var duration = Math.trunc(duration/60)
+            var hrs = duration%60
+            
+            let remaining = (hrs+"h "+mins+"m "+secs+"s")
+            let msgReply = `Wait **${remaining}** before using \`/info\`.`
+            await interaction.reply(msgReply)
+        } else {
+            await interaction.reply({ allowedMentions: { repliedUser: false }, embeds: [infoEmbed] });
+            setInfoSlashCooldown(interaction.guild?.id, interaction.author?.id, Date.now())
+        }
     },
 };

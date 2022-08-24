@@ -1,5 +1,6 @@
 const { readdirSync } = require("fs");
 const { DateTime } = require("luxon")
+const { getInfoCooldown, setInfoCooldown } = require("../../../utils/functions.js")
 
 module.exports = {
     name: 'info',
@@ -42,7 +43,26 @@ module.exports = {
         .setColor(bot.config.embedColor)
         .setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` });
 
-        message.reply({ allowedMentions: { repliedUser: false }, embeds: [infoEmbed] });
+        let cooldown = 10000
+    	
+    	let giver = await getInfoCooldown(message.guild.id, message.author.id)
+    	
+    	if (giver !== null && cooldown - (Date.now() - giver) > 0 ) {
+    		let times = cooldown - (Date.now() - giver)
+    		var duration = Math.trunc(times/1000)
+    		var secs = duration%60
+    		duration = Math.trunc(duration/60)
+    		var mins = duration%60
+    		duration = Math.trunc(duration/60)
+    		var hrs = duration%60
+    		
+    		let remaining = (hrs+"h "+mins+"m "+secs+"s")
+    		
+    		message.channel.send(`${a.displayName}, wait **${remaining}** before using \`info\`.`)
+        } else {
+            message.reply({ allowedMentions: { repliedUser: false }, embeds: [infoEmbed] });
+            setInfoCooldown(message.guild.id, message.author.id, Date.now())
+        }
 
     }
 }

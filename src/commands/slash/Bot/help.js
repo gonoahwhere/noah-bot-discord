@@ -1,5 +1,5 @@
 const { readdirSync } = require("fs");
-
+const { getHelpSlashCooldown, setHelpSlashCooldown } = require("../../../utils/functions.js")
 // Example of how to make a Help SlashCommand
 
 module.exports = {
@@ -30,7 +30,24 @@ module.exports = {
             );
 
         const commandInt = interaction.options.getString("command");
-        if (!commandInt) {
+        
+        
+        let helpSlashCooldown = await getHelpSlashCooldown(interaction.guild?.id, interaction.author?.id);
+        let cooldown = 10000
+        
+        if (helpSlashCooldown !== null && cooldown - (Date.now() - helpSlashCooldown) > 0) {
+          let times = cooldown - (Date.now() - helpSlashCooldown)
+          var duration = Math.trunc(times/1000)
+          var secs = duration%60
+          var duration = Math.trunc(duration/60)
+          var mins = duration%60
+          var duration = Math.trunc(duration/60)
+          var hrs = duration%60
+          
+          let remaining = (hrs+"h "+mins+"m "+secs+"s")
+          let msgReply = `Wait **${remaining}** before using \`/help\`.`
+          await interaction.reply(msgReply)
+        } else if (!commandInt) {
 
             // Get the commands of a Bot category
             const botCommandsList = [];
@@ -51,11 +68,13 @@ module.exports = {
                 .setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` });
             
             interaction.reply({ embeds: [helpEmbed], components: [row] });
+            setHelpSlashCooldown(interaction.guild?.id, interaction.author?.id, Date.now())
         } else {
             const command = bot.slash.get(commandInt.toLowerCase());
 
             if (!command) {
                 interaction.reply({ content: `There isnt a slash command named "${commandInt}"` });
+                setHelpSlashCooldown(interaction.guild?.id, interaction.author?.id, Date.now())
             } else {
 
                 let command = bot.slash.get(commandInt.toLowerCase());
@@ -74,6 +93,7 @@ module.exports = {
                     .setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` });
 
                 interaction.reply({ embeds: [helpCmdEmbed] });
+                setHelpSlashCooldown(interaction.guild?.id, interaction.author?.id, Date.now())
             }
         }
     },

@@ -1,4 +1,5 @@
 const { readdirSync } = require("fs");
+const { getHelpCooldown, setHelpCooldown } = require("../../../utils/functions.js")
 
 // Example of how to make a Help Command
 
@@ -22,7 +23,23 @@ module.exports = {
                 .setURL("http://github.com/gonoahwhere/noah-bot-discord")
         );
 
-        if (!args[0]) {
+        let cooldown = 10000
+    	
+    	let giver = await getHelpCooldown(message.guild.id, message.author.id)
+    	
+    	if (giver !== null && cooldown - (Date.now() - giver) > 0 ) {
+    		let times = cooldown - (Date.now() - giver)
+    		var duration = Math.trunc(times/1000)
+    		var secs = duration%60
+    		duration = Math.trunc(duration/60)
+    		var mins = duration%60
+    		duration = Math.trunc(duration/60)
+    		var hrs = duration%60
+    		
+    		let remaining = (hrs+"h "+mins+"m "+secs+"s")
+    		
+    		message.channel.send(`${a.displayName}, wait **${remaining}** before using \`help\`.`)
+        } else if (!args[0]) {
 
             // Get the commands of a Bot category
             const botCommandsList = [];
@@ -52,12 +69,14 @@ module.exports = {
                 .setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` });
 
             return message.reply({ allowedMentions: { repliedUser: false }, embeds: [helpEmbed], components: [row] });
+            setHelpCooldown(message.guild.id, message.author.id, Date.now())
         } else {
             const command = bot.commands.get(args[0].toLowerCase()) || bot.commands.find((c) => c.aliases && c.aliases.includes(args[0].toLowerCase()));
 
             // This is what it sends when using the command with argument and it does not find the command
             if (!command) {
                 message.reply({ content: `There isn't any command named "${args[0]}"`, allowedMentions: { repliedUser: false } });
+                setHelpCooldown(message.guild.id, message.author.id, Date.now())
             } else {
 
                 // This is what it sends when using the command with argument and if it finds the command
@@ -79,6 +98,7 @@ module.exports = {
                     .setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` });
 
                 return message.reply({ allowedMentions: { repliedUser: false }, embeds: [helpCmdEmbed] });
+                setHelpCooldown(message.guild.id, message.author.id, Date.now())
             }
         }
     },
