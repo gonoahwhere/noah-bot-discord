@@ -44,7 +44,7 @@ module.exports = {
         .setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` });
 
         let cooldown = 10000
-    	
+    	let a = await message.guild.members.fetch(message.author)
     	let giver = await getInfoCooldown(message.guild.id, message.author.id)
     	
     	if (giver !== null && cooldown - (Date.now() - giver) > 0 ) {
