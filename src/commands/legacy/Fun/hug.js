@@ -53,7 +53,7 @@ module.exports = {
     			    .setColor(bot.config.embedColor)
        				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
        				
-				message.reply({ allowedMentions: { repliedUser: false }, embeds: [infoEmbed] });
+				message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
        			setHugCooldown(message.guild.id, a.id, Date.now())
             })
     	}

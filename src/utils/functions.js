@@ -10,9 +10,9 @@ const getHelpCooldown = (guildId, userId) => db.get(`userhelpcooldown_${guildId}
 // db.subtract()
 
 // db.set()
-const setHugCooldown = (guildId, userId) => db.set(`userhugcooldown_${guildId}_${userId}`)
-const setInfoCooldown = (guildId, userId) => db.set(`userinfocooldown_${guildId}_${userId}`)
-const setHelpCooldown = (guildId, userId) => db.set(`userhelpcooldown_${guildId}_${userId}`)
+const setHugCooldown = (guildId, userId, date) => db.set(`userhugcooldown_${guildId}_${userId}`, date)
+const setInfoCooldown = (guildId, userId, date) => db.set(`userinfocooldown_${guildId}_${userId}`, date)
+const setHelpCooldown = (guildId, userId, date) => db.set(`userhelpcooldown_${guildId}_${userId}`, date)
 
 module.exports = {
     getHugCooldown,
