@@ -45,7 +45,7 @@ module.exports = {
 
         let cooldown = 10000
     	let a = await message.guild.members.fetch(message.author)
-    	let giver = await getInfoCooldown(message.guild.id, message.author.id)
+    	let giver = await getInfoCooldown(message.guild.id, a.id)
     	
     	if (giver !== null && cooldown - (Date.now() - giver) > 0 ) {
     		let times = cooldown - (Date.now() - giver)
@@ -61,7 +61,7 @@ module.exports = {
     		message.channel.send(`${a.displayName}, wait **${remaining}** before using \`info\`.`)
         } else {
             message.reply({ allowedMentions: { repliedUser: false }, embeds: [infoEmbed] });
-            setInfoCooldown(message.guild.id, message.author.id, Date.now())
+            setInfoCooldown(message.guild.id, a.id, Date.now())
         }
 
     }
