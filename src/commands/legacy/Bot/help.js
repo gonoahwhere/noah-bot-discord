@@ -25,7 +25,8 @@ module.exports = {
 
         let cooldown = 10000
     	
-    	let giver = await getHelpCooldown(message.guild.id, message.author.id)
+        let a = await message.guild.members.fetch(message.author)
+    	let giver = await getHelpCooldown(message.guild.id, a.id)
     	
     	if (giver !== null && cooldown - (Date.now() - giver) > 0 ) {
     		let times = cooldown - (Date.now() - giver)
@@ -69,14 +70,14 @@ module.exports = {
                 .setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` });
 
             return message.reply({ allowedMentions: { repliedUser: false }, embeds: [helpEmbed], components: [row] });
-            setHelpCooldown(message.guild.id, message.author.id, Date.now())
+            setHelpCooldown(message.guild.id, a.id, Date.now())
         } else {
             const command = bot.commands.get(args[0].toLowerCase()) || bot.commands.find((c) => c.aliases && c.aliases.includes(args[0].toLowerCase()));
 
             // This is what it sends when using the command with argument and it does not find the command
             if (!command) {
                 message.reply({ content: `There isn't any command named "${args[0]}"`, allowedMentions: { repliedUser: false } });
-                setHelpCooldown(message.guild.id, message.author.id, Date.now())
+                setHelpCooldown(message.guild.id, a.id, Date.now())
             } else {
 
                 // This is what it sends when using the command with argument and if it finds the command
@@ -98,7 +99,7 @@ module.exports = {
                     .setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` });
 
                 return message.reply({ allowedMentions: { repliedUser: false }, embeds: [helpCmdEmbed] });
-                setHelpCooldown(message.guild.id, message.author.id, Date.now())
+                setHelpCooldown(message.guild.id, a.id, Date.now())
             }
         }
     },

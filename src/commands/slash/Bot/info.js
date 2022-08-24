@@ -1,4 +1,5 @@
 const { getInfoSlashCooldown, setInfoSlashCooldown } = require("../../../utils/functions.js")
+const { DateTime } = require("luxon")
 
 module.exports = {
     name: "info",
@@ -39,7 +40,7 @@ module.exports = {
         
         let infoSlashCooldown = await getInfoSlashCooldown(interaction.guild?.id, interaction.author?.id);
         let cooldown = 10000
-        
+
         if (infoSlashCooldown !== null && cooldown - (Date.now() - infoSlashCooldown) > 0) {
             let times = cooldown - (Date.now() - infoSlashCooldown)
             var duration = Math.trunc(times/1000)
