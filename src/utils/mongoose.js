@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const config = require("../config.json")
 
 module.exports = {
   init: () => {
@@ -12,7 +11,7 @@ module.exports = {
       family: 4
     };
     
-    mongoose.connect(config.MongoURI, dbOptions);
+    mongoose.connect(process.env.MongoURI, dbOptions);
     mongoose.set("useFindAndModify", false);
     mongoose.Promise = global.Promise;
     
@@ -31,5 +30,3 @@ module.exports = {
     });
   }
 }
-
-//mongodb+srv://noah:freddiej.18@rocket.wi42k.mongodb.net/rocket?retryWrites=true&w=majority
