@@ -69,7 +69,7 @@ module.exports = {
                 .setColor(bot.config.embedColor)
                 .setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` });
 
-            return message.reply({ allowedMentions: { repliedUser: false }, embeds: [helpEmbed], components: [row] });
+            message.reply({ allowedMentions: { repliedUser: false }, embeds: [helpEmbed], components: [row] });
             setHelpCooldown(message.guild.id, a.id, Date.now())
         } else {
             const command = bot.commands.get(args[0].toLowerCase()) || bot.commands.find((c) => c.aliases && c.aliases.includes(args[0].toLowerCase()));
@@ -98,7 +98,7 @@ module.exports = {
                     .setColor(bot.config.embedColor)
                     .setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` });
 
-                return message.reply({ allowedMentions: { repliedUser: false }, embeds: [helpCmdEmbed] });
+                message.reply({ allowedMentions: { repliedUser: false }, embeds: [helpCmdEmbed] });
                 setHelpCooldown(message.guild.id, a.id, Date.now())
             }
         }

@@ -33,16 +33,16 @@ module.exports = {
     		
     		message.channel.send(`${a.displayName}, wait **${remaining}** before using \`hug\`.`)
     	} else if (!args[0]) {
-    		return message.reply("you need to mention who you want to hug, bruh")
+    		message.reply("you need to mention who you want to hug, bruh")
     		setHugCooldown(message.guild.id, a.id, Date.now())
     	} else if (args[0] === null) {
-    		return message.reply("that ain't a valid person, mention a real human bruh.")
+    		message.reply("that ain't a valid person, mention a real human bruh.")
     		setHugCooldown(message.guild.id, a.id, Date.now())
     	} else if (c.bot) {
-    		return message.reply("you cannot hug a piece of metal, idiot.")
+    		message.reply("you cannot hug a piece of metal, idiot.")
     		setHugCooldown(message.guild.id, a.id, Date.now())
     	} else if (args[0] === message.author) {
-    		return message.reply("you cannot hug yourself, loser.")
+    		message.reply("you cannot hug yourself, loser.")
     		setHugCooldown(message.guild.id, a.id, Date.now())
     	} else {
     		emotes.hug().then(hug => {
