@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Guild = require("../models/guild.js");
+const Guild = require("../../models/guild.js");
 
 module.exports = {
   name: "guildDelete",
