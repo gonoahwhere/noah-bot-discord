@@ -1,4 +1,4 @@
-const { Database } = require("quickmongo");
+const { Database } = require("mongoose");
 const db = new Database(process.env.MongoURI);
 const anime = require("discord-images");
 const { getWaveCooldown, setWaveCooldown } = require("../../../utils/functions.js")

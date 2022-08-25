@@ -1,4 +1,4 @@
-const { Database } = require("quickmongo");
+const { Database } = require("mongoose");
 const db = new Database(process.env.MongoURI);
 
 // db.fetch()

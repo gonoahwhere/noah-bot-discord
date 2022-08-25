@@ -1,6 +1,6 @@
 const { readdirSync } = require("fs");
 const { DateTime } = require("luxon")
-const { Database } = require("quickmongo");
+const { Database } = require("mongoose");
 const db = new Database(process.env.MongoURI);
 const { getInfoCooldown, setInfoCooldown, getTotalCommandCountGuild } = require("../../../utils/functions.js")
 
