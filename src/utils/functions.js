@@ -36,10 +36,7 @@ const getHugSlashCooldown = (guildId, userId) => db.get(`userhugslashcooldown_${
 const getInfoSlashCooldown = (guildId, userId) => db.get(`userinfoslashcooldown_${guildId}_${userId}`)
 const getHelpSlashCooldown = (guildId, userId) => db.get(`userhelpslashcooldown_${guildId}_${userId}`)
 
-const getTotalCommandCount = (amount) => db.get(`totalcommandcount`, amount)
-
 // db.add()
-const addTotalCommandCount = (amount) => db.add(`totalcommandcount`, amount)
 
 // db.subtract()
 
@@ -78,8 +75,6 @@ const setHugSlashCooldown = (guildId, userId, date) => db.set(`userhugslashcoold
 const setInfoSlashCooldown = (guildId, userId, date) => db.set(`userinfoslashcooldown_${guildId}_${userId}`, date)
 const setHelpSlashCooldown = (guildId, userId, date) => db.set(`userhelpslashcooldown_${guildId}_${userId}`, date)
 
-const setTotalCommandCount = (amount) => db.set(`totalcommandcount`, amount)
-
 module.exports = {
     getBiteCooldown,
     getBlushCooldown,
@@ -115,10 +110,6 @@ module.exports = {
     getInfoSlashCooldown,
     getHelpSlashCooldown,
 
-    getTotalCommandCount,
-
-    addTotalCommandCount,
-
     setBiteCooldown,
     setBlushCooldown,
     setBonkCooldown,
@@ -153,5 +144,4 @@ module.exports = {
     setInfoSlashCooldown,
     setHelpSlashCooldown,
 
-    setTotalCommandCount,
 }

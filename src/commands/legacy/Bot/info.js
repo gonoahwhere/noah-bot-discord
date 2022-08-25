@@ -1,6 +1,8 @@
 const { readdirSync } = require("fs");
 const { DateTime } = require("luxon")
-const { getInfoCooldown, setInfoCooldown, getTotalCommandCount } = require("../../../utils/functions.js")
+const { QuickDB } = require('quick.db');
+const db = new QuickDB();
+const { getInfoCooldown, setInfoCooldown } = require("../../../utils/functions.js")
 
 module.exports = {
     name: 'info',
@@ -28,9 +30,9 @@ module.exports = {
         let userNum = bot.users.cache.size
         let commandNum = bot.commands.size
 
-        let totalCommandCountBot = await getTotalCommandCount();
+        let totalCommandCountBot = await db.get(`global_commands`)
 
-        if (totalCommandCountBot === null) totalCommandCountBot = 0
+        if (totalCommandCountBot === null) totalCommandCountBot = 1
 
         const formatServerNum = serverNum => {
             if (serverNum < 1e3) return serverNum;
