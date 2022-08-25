@@ -15,7 +15,7 @@ module.exports = {
     	let a = await message.guild.members.fetch(message.author)
     	let b = await message.guild.members.fetch(message.mentions.users.first())
     	let c = message.mentions.users.first()
-    	const image = anime.hug()
+    	const image = await anime.hug()
     	let cooldown = 10000
     	
     	let giver = await getHugCooldown(message.guild.id, a.id)
