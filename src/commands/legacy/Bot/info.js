@@ -24,7 +24,34 @@ module.exports = {
         let londonShortTZ = rezoned.toLocaleString({timeZoneName: 'short'})
         let londonShort = londonShortTZ.substr(11,16);
 
-        //timeZoneName: 'short'
+        let serverNum = bot.guilds.cache.size
+        let userNum = bot.users.cache.size
+        let commandNum = bot.commands.size
+
+        const formatServerNum = serverNum => {
+            if (serverNum < 1e3) return serverNum;
+            if (serverNum >= 1e3 && serverNum < 1e6) return +(serverNum / 1e3).toFixed(1) + "K";
+            if (serverNum >= 1e6 && serverNum < 1e9) return +(serverNum / 1e6).toFixed(1) + "M";
+            if (serverNum >= 1e9 && serverNum < 1e12) return +(serverNum / 1e9).toFixed(1) + "B";
+            if (serverNum >= 1e12) return + (serverNum / 1e12).toFixed(1) + "T";
+        };
+
+        const formatUserNum = userNum => {
+            if (userNum < 1e3) return userNum;
+            if (userNum >= 1e3 && userNum < 1e6) return +(userNum / 1e3).toFixed(1) + "K";
+            if (userNum >= 1e6 && userNum < 1e9) return +(userNum / 1e6).toFixed(1) + "M";
+            if (userNum >= 1e9 && userNum < 1e12) return +(userNum / 1e9).toFixed(1) + "B";
+            if (userNum >= 1e12) return + (userNum / 1e12).toFixed(1) + "T";
+        };
+
+        const formatCommandNum = commandNum => {
+            if (commandNum < 1e3) return commandNum;
+            if (commandNum >= 1e3 && commandNum < 1e6) return +(commandNum / 1e3).toFixed(1) + "K";
+            if (commandNum >= 1e6 && commandNum < 1e9) return +(commandNum / 1e6).toFixed(1) + "M";
+            if (commandNum >= 1e9 && commandNum < 1e12) return +(commandNum / 1e9).toFixed(1) + "B";
+            if (commandNum >= 1e12) return + (commandNum / 1e12).toFixed(1) + "T";
+        };
+
         let infoEmbed = new bot.discord.MessageEmbed()
         .setAuthor({ name: `◠ Information ◡`, iconURL: bot.user.displayAvatarURL() })
         .setDescription('∘∘∘ Beep Boop. I am the droid version of sir noah ∘∘∘')
@@ -32,10 +59,10 @@ module.exports = {
             { name: '➳ Assembled', value: '`15th Dec 2021`', inline: true },
             { name: '➳ Master', value: '`Noah💙#6336`', inline: true },
             { name: '➳ Lived For', value: `\`${days}d\` \`${hours}h\` \`${minutes}m\` \`${seconds}s\``, inline: true },
-            { name: '➳ Workers', value: `\`${bot.users.cache.size}\``, inline: true },
+            { name: '➳ Workers', value: `\`${formatUserNum(userNum)}\``, inline: true },
             { name: '➳ Edition', value: '`1.0.0`', inline: true },
-            { name: '➳ Copies', value: `\`${bot.guilds.cache.size}\``, inline: true },
-            { name: '➳ Parts', value: `\`${bot.commands.size}\``, inline: true},
+            { name: '➳ Copies', value: `\`${formatServerNum(serverNum)}\``, inline: true },
+            { name: '➳ Parts', value: `\`${formatCommandNum(commandNum)}\``, inline: true},
             { name: '➳ Pong', value: `\`${bot.ws.ping}ms\``, inline: true},
             { name: '➳ Clock', value: `\`${londonDate}\`` + " " + `\`${londonTime}\`` + " " + `\`${londonShort}\``, inline: true}
         )
