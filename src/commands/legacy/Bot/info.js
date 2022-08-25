@@ -67,6 +67,14 @@ module.exports = {
             if (totalCommandCountBot >= 1e12) return + (totalCommandCountBot / 1e12).toFixed(1) + "T";
         };
 
+        const formatTotalCommandCountGuild = totalCommandCountGuild => {
+            if (totalCommandCountGuild < 1e3) return totalCommandCountGuild;
+            if (totalCommandCountGuild >= 1e3 && totalCommandCountGuild < 1e6) return +(totalCommandCountGuild / 1e3).toFixed(1) + "K";
+            if (totalCommandCountGuild >= 1e6 && totalCommandCountGuild < 1e9) return +(totalCommandCountGuild / 1e6).toFixed(1) + "M";
+            if (totalCommandCountGuild >= 1e9 && totalCommandCountGuild < 1e12) return +(totalCommandCountGuild / 1e9).toFixed(1) + "B";
+            if (totalCommandCountGuild >= 1e12) return + (totalCommandCountGuild / 1e12).toFixed(1) + "T";
+        };
+
         let infoEmbed = new bot.discord.MessageEmbed()
         .setAuthor({ name: `◠ Information ◡`, iconURL: bot.user.displayAvatarURL() })
         .setDescription('∘∘∘ Beep Boop. I am the droid version of sir noah ∘∘∘')
@@ -78,7 +86,8 @@ module.exports = {
             { name: '➳ Edition', value: '`1.0.0`', inline: true },
             { name: '➳ Copies', value: `\`${formatServerNum(serverNum)}\``, inline: true },
             { name: '➳ Parts', value: `\`${formatCommandNum(commandNum)}\``, inline: true},
-            { name: '➳ Total Parts', value: `\`${formatTotalCommandCountBot(totalCommandCountBot)}\``, inline: true},
+            { name: '➳ Guild Parts', value: `\`${formatTotalCommandCountGuild(totalCommandCountGuild)}\``, inline: true},
+            { name: '➳ Global Parts', value: `\`${formatTotalCommandCountBot(totalCommandCountBot)}\``, inline: true},
             { name: '➳ Pong', value: `\`${bot.ws.ping}ms\``, inline: true},
             { name: '➳ Clock', value: `\`${londonDate}\`` + " " + `\`${londonTime}\`` + " " + `\`${londonShort}\``, inline: true}
         )
