@@ -18,7 +18,7 @@ module.exports = {
             }
         }
 
-        if (message.content.startsWith(bot.config.botPrefix)) {
+        if (message.content.toLowerCase().startsWith(bot.config.botPrefix)) {
             db.add(`totalcommandcountbot`, 1)
             addTotalCommandCountGuild(message.guild.id, 1)
         }
