@@ -40,8 +40,8 @@ const getTotalCommandCountGuild = (guildId) => db.get(`totalcommandcountguild_${
 const getTotalCommandCountBot = () => db.get(`totalcommandcountbot_`)
 
 // db.add()
-const addTotalCommandCountGuild = (guildId, amount) => db.get(`totalcommandcountguild_${guildId}`, amount)
-const addTotalCommandCountBot = (amount) => db.get(`totalcommandcountbot_`, amount)
+const addTotalCommandCountGuild = (guildId, amount) => db.add(`totalcommandcountguild_${guildId}`, amount)
+const addTotalCommandCountBot = (amount) => db.add(`totalcommandcountbot_`, amount)
 
 // db.subtract()
 
