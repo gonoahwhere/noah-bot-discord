@@ -1,3 +1,5 @@
+const { addTotalCommandCount } = require("../../utils/functions.js");
+
 module.exports = {
     name: 'messageCreate',
 
@@ -13,7 +15,9 @@ module.exports = {
                 return message.reply({ content: "This command only for Bot Owner!", allowedMentions: { repliedUser: false } });
             }
         }
-        
+
+        if (message.content.toLowerCase().startsWith(bot.config.botPrefix))
+        addTotalCommandCount(message.guild.id, 1)
         await command.run(bot, message, args);
 
     }

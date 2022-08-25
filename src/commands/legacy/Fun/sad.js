@@ -16,7 +16,7 @@ module.exports = {
     	let a = await message.guild.members.fetch(message.author)
     	let b = await message.guild.members.fetch(message.mentions.users.first())
     	let c = message.mentions.users.first()
-    	
+    	const image = anime.sad()
     	let cooldown = 10000
     	
     	let giver = await getSadCooldown(message.guild.id, a.id)
@@ -34,17 +34,15 @@ module.exports = {
     		
     		message.channel.send(`${a.displayName}, wait **${remaining}** before using \`sad\`.`)
     	} else {
-    		emotes.sad().then(sad => {
-    			const embed = new bot.discord.MessageEmbed()
-    				.setAuthor({ name: `◠ Sad ◡`, iconURL: bot.user.displayAvatarURL() })
-    				.setDescription(`∘∘∘ ${a.displayName} is feeling sad ∘∘∘`)
-    				.setImage(sad)
-    			    .setColor(bot.config.embedColor)
-       				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
+   			const embed = new bot.discord.MessageEmbed()
+   				.setAuthor({ name: `◠ Sad ◡`, iconURL: bot.user.displayAvatarURL() })
+   				.setDescription(`∘∘∘ ${a.displayName} is feeling sad ∘∘∘`)
+   				.setImage(image)
+   			    .setColor(bot.config.embedColor)
+   				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
        				
-				message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
-       			setSadCooldown(message.guild.id, a.id, Date.now())
-            })
+			message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
+   			setSadCooldown(message.guild.id, a.id, Date.now())
     	}
     }
 }

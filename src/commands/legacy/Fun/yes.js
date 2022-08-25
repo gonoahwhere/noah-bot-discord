@@ -16,7 +16,7 @@ module.exports = {
     	let a = await message.guild.members.fetch(message.author)
     	let b = await message.guild.members.fetch(message.mentions.users.first())
     	let c = message.mentions.users.first()
-    	
+    	const image = anime.yes()
     	let cooldown = 10000
     	
     	let giver = await getYesCooldown(message.guild.id, a.id)
@@ -34,17 +34,15 @@ module.exports = {
     		
     		message.channel.send(`${a.displayName}, wait **${remaining}** before using \`yes\`.`)
     	} else {
-    		emotes.yes().then(yes => {
-    			const embed = new bot.discord.MessageEmbed()
-    				.setAuthor({ name: `◠ Yes ◡`, iconURL: bot.user.displayAvatarURL() })
-    				.setDescription(`∘∘∘ ${a.displayName} is saying yes ∘∘∘`)
-    				.setImage(yes)
-    			    .setColor(bot.config.embedColor)
-       				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
+    		const embed = new bot.discord.MessageEmbed()
+    			.setAuthor({ name: `◠ Yes ◡`, iconURL: bot.user.displayAvatarURL() })
+    			.setDescription(`∘∘∘ ${a.displayName} is saying yes ∘∘∘`)
+    			.setImage(image)
+    			.setColor(bot.config.embedColor)
+       			.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
        				
-				message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
-       			setYesCooldown(message.guild.id, a.id, Date.now())
-            })
+			message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
+       		setYesCooldown(message.guild.id, a.id, Date.now())
     	}
     }
 }

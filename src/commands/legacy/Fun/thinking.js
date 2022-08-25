@@ -16,7 +16,7 @@ module.exports = {
     	let a = await message.guild.members.fetch(message.author)
     	let b = await message.guild.members.fetch(message.mentions.users.first())
     	let c = message.mentions.users.first()
-    	
+    	const image = anime.thinking()
     	let cooldown = 10000
     	
     	let giver = await getThinkingCooldown(message.guild.id, a.id)
@@ -34,17 +34,15 @@ module.exports = {
     		
     		message.channel.send(`${a.displayName}, wait **${remaining}** before using \`thinking\`.`)
     	} else {
-    		emotes.thinking().then(thinking => {
-    			const embed = new bot.discord.MessageEmbed()
-    				.setAuthor({ name: `◠ Thinking ◡`, iconURL: bot.user.displayAvatarURL() })
-    				.setDescription(`∘∘∘ ${a.displayName} is thinking ∘∘∘`)
-    				.setImage(thinking)
-    			    .setColor(bot.config.embedColor)
-       				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
+   			const embed = new bot.discord.MessageEmbed()
+   				.setAuthor({ name: `◠ Thinking ◡`, iconURL: bot.user.displayAvatarURL() })
+   				.setDescription(`∘∘∘ ${a.displayName} is thinking ∘∘∘`)
+   				.setImage(image)
+  			    .setColor(bot.config.embedColor)
+   				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
        				
-				message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
-       			setThinkingCooldown(message.guild.id, a.id, Date.now())
-            })
+			message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
+   			setThinkingCooldown(message.guild.id, a.id, Date.now())
     	}
     }
 }

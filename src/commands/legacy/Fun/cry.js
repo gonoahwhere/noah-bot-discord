@@ -16,7 +16,7 @@ module.exports = {
     	let a = await message.guild.members.fetch(message.author)
     	let b = await message.guild.members.fetch(message.mentions.users.first())
     	let c = message.mentions.users.first()
-    	
+    	const image = anime.cry()
     	let cooldown = 10000
     	
     	let giver = await getCryCooldown(message.guild.id, a.id)
@@ -34,17 +34,15 @@ module.exports = {
     		
     		message.channel.send(`${a.displayName}, wait **${remaining}** before using \`cry\`.`)
     	} else {
-    		emotes.cry().then(cry => {
-    			const embed = new bot.discord.MessageEmbed()
-    				.setAuthor({ name: `◠ Cry ◡`, iconURL: bot.user.displayAvatarURL() })
-    				.setDescription(`∘∘∘ ${a.displayName} is crying ∘∘∘`)
-    				.setImage(cry)
-    			    .setColor(bot.config.embedColor)
-       				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
+    		const embed = new bot.discord.MessageEmbed()
+    			.setAuthor({ name: `◠ Cry ◡`, iconURL: bot.user.displayAvatarURL() })
+    			.setDescription(`∘∘∘ ${a.displayName} is crying ∘∘∘`)
+    			.setImage(image)
+    			.setColor(bot.config.embedColor)
+       			.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
        				
-				message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
-       			setCryCooldown(message.guild.id, a.id, Date.now())
-            })
+			message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
+       		setCryCooldown(message.guild.id, a.id, Date.now())
     	}
     }
 }

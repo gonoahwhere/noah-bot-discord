@@ -16,7 +16,7 @@ module.exports = {
     	let a = await message.guild.members.fetch(message.author)
     	let b = await message.guild.members.fetch(message.mentions.users.first())
     	let c = message.mentions.users.first()
-    	
+    	const image = anime.punch()
     	let cooldown = 10000
     	
     	let giver = await getPunchCooldown(message.guild.id, a.id)
@@ -46,17 +46,15 @@ module.exports = {
     		message.reply("you cannot punch yourself, loser.")
     		setPunchCooldown(message.guild.id, a.id, Date.now())
     	} else {
-    		emotes.punch().then(punch => {
-    			const embed = new bot.discord.MessageEmbed()
-    				.setAuthor({ name: `◠ Punch ◡`, iconURL: bot.user.displayAvatarURL() })
-    				.setDescription(`∘∘∘ ${b.displayName} has been punched by ${a.displayName} ∘∘∘`)
-    				.setImage(punch)
-    			    .setColor(bot.config.embedColor)
-       				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
+    		const embed = new bot.discord.MessageEmbed()
+    			.setAuthor({ name: `◠ Punch ◡`, iconURL: bot.user.displayAvatarURL() })
+    			.setDescription(`∘∘∘ ${b.displayName} has been punched by ${a.displayName} ∘∘∘`)
+    			.setImage(image)
+    			.setColor(bot.config.embedColor)
+       			.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
        				
-				message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
-       			setPunchCooldown(message.guild.id, a.id, Date.now())
-            })
+			message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
+       		setPunchCooldown(message.guild.id, a.id, Date.now())
     	}
     }
 }

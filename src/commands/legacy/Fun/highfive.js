@@ -15,7 +15,7 @@ module.exports = {
     	let a = await message.guild.members.fetch(message.author)
     	let b = await message.guild.members.fetch(message.mentions.users.first())
     	let c = message.mentions.users.first()
-    	
+    	const image = anime.highfive()
     	let cooldown = 10000
     	
     	let giver = await getHighfiveCooldown(message.guild.id, a.id)
@@ -45,17 +45,15 @@ module.exports = {
     		message.reply("you cannot highfive yourself, loser.")
     		setHighfiveCooldown(message.guild.id, a.id, Date.now())
     	} else {
-    		emotes.highfive().then(highfive => {
-    			const embed = new bot.discord.MessageEmbed()
-    				.setAuthor({ name: `◠ Highfive ◡`, iconURL: bot.user.displayAvatarURL() })
-    				.setDescription(`∘∘∘ ${b.displayName} has been highfived by ${a.displayName} ∘∘∘`)
-    				.setImage(highfive)
-    			    .setColor(bot.config.embedColor)
-       				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
+    		const embed = new bot.discord.MessageEmbed()
+    			.setAuthor({ name: `◠ Highfive ◡`, iconURL: bot.user.displayAvatarURL() })
+    			.setDescription(`∘∘∘ ${b.displayName} has been highfived by ${a.displayName} ∘∘∘`)
+    			.setImage(image)
+    			.setColor(bot.config.embedColor)
+       			.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
        				
-				message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
-       			setHighfiveCooldown(message.guild.id, a.id, Date.now())
-            })
+			message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
+       		setHighfiveCooldown(message.guild.id, a.id, Date.now())
     	}
     }
 }

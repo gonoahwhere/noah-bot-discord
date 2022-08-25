@@ -16,7 +16,7 @@ module.exports = {
     	let a = await message.guild.members.fetch(message.author)
     	let b = await message.guild.members.fetch(message.mentions.users.first())
     	let c = message.mentions.users.first()
-    	
+    	const image = anime.bonk()
     	let cooldown = 10000
     	
     	let giver = await getBonkCooldown(message.guild.id, a.id)
@@ -46,17 +46,15 @@ module.exports = {
     		message.reply("you cannot bonk yourself, loser.")
     		setBonkCooldown(message.guild.id, a.id, Date.now())
     	} else {
-    		emotes.bonk().then(bonk => {
-    			const embed = new bot.discord.MessageEmbed()
-    				.setAuthor({ name: `◠ Bonk ◡`, iconURL: bot.user.displayAvatarURL() })
-    				.setDescription(`∘∘∘ ${b.displayName} has been bonked by ${a.displayName} ∘∘∘`)
-    				.setImage(bonk)
-    			    .setColor(bot.config.embedColor)
-       				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
+    		const embed = new bot.discord.MessageEmbed()
+    			.setAuthor({ name: `◠ Bonk ◡`, iconURL: bot.user.displayAvatarURL() })
+    			.setDescription(`∘∘∘ ${b.displayName} has been bonked by ${a.displayName} ∘∘∘`)
+    			.setImage(image)
+    			.setColor(bot.config.embedColor)
+       			.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
        				
-				message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
-       			setBonkCooldown(message.guild.id, a.id, Date.now())
-            })
+			message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
+       		setBonkCooldown(message.guild.id, a.id, Date.now())
     	}
     }
 }

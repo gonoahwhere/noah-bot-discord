@@ -16,7 +16,7 @@ module.exports = {
     	let a = await message.guild.members.fetch(message.author)
     	let b = await message.guild.members.fetch(message.mentions.users.first())
     	let c = message.mentions.users.first()
-    	
+    	const image = anime.happy()
     	let cooldown = 10000
     	
     	let giver = await getHappyCooldown(message.guild.id, a.id)
@@ -34,17 +34,15 @@ module.exports = {
     		
     		message.channel.send(`${a.displayName}, wait **${remaining}** before using \`happy\`.`)
     	} else {
-    		emotes.happy().then(happy => {
-    			const embed = new bot.discord.MessageEmbed()
-    				.setAuthor({ name: `◠ Happy ◡`, iconURL: bot.user.displayAvatarURL() })
-    				.setDescription(`∘∘∘ ${a.displayName} is feeling happy ∘∘∘`)
-    				.setImage(happy)
-    			    .setColor(bot.config.embedColor)
-       				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
+    		const embed = new bot.discord.MessageEmbed()
+    			.setAuthor({ name: `◠ Happy ◡`, iconURL: bot.user.displayAvatarURL() })
+    			.setDescription(`∘∘∘ ${a.displayName} is feeling happy ∘∘∘`)
+    			.setImage(image)
+    			.setColor(bot.config.embedColor)
+       			.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
        				
-				message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
-       			setHappyCooldown(message.guild.id, a.id, Date.now())
-            })
+			message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
+       		setHappyCooldown(message.guild.id, a.id, Date.now())
     	}
     }
 }

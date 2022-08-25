@@ -16,7 +16,7 @@ module.exports = {
     	let a = await message.guild.members.fetch(message.author)
     	let b = await message.guild.members.fetch(message.mentions.users.first())
     	let c = message.mentions.users.first()
-    	
+    	const image = anime.bite()
     	let cooldown = 10000
     	
     	let giver = await getBiteCooldown(message.guild.id, a.id)
@@ -46,17 +46,15 @@ module.exports = {
     		message.reply("you cannot bite yourself, loser.")
     		setBiteCooldown(message.guild.id, a.id, Date.now())
     	} else {
-    		emotes.bite().then(bite => {
-    			const embed = new bot.discord.MessageEmbed()
-    				.setAuthor({ name: `◠ Bite ◡`, iconURL: bot.user.displayAvatarURL() })
-    				.setDescription(`∘∘∘ ${b.displayName} has been bitten by ${a.displayName} ∘∘∘`)
-    				.setImage(bite)
-    			    .setColor(bot.config.embedColor)
-       				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
-       				
-				message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
-       			setBiteCooldown(message.guild.id, a.id, Date.now())
-            })
+    		const embed = new bot.discord.MessageEmbed()
+    			.setAuthor({ name: `◠ Bite ◡`, iconURL: bot.user.displayAvatarURL() })
+    			.setDescription(`∘∘∘ ${b.displayName} has been bitten by ${a.displayName} ∘∘∘`)
+				.setImage(image)
+   			    .setColor(bot.config.embedColor)
+   				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
+      				
+			message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
+   			setBiteCooldown(message.guild.id, a.id, Date.now())
     	}
     }
 }

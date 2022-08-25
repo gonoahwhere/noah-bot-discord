@@ -16,7 +16,7 @@ module.exports = {
     	let a = await message.guild.members.fetch(message.author)
     	let b = await message.guild.members.fetch(message.mentions.users.first())
     	let c = message.mentions.users.first()
-    	
+    	const image = anime.stare()
     	let cooldown = 10000
     	
     	let giver = await getStareCooldown(message.guild.id, a.id)
@@ -46,17 +46,15 @@ module.exports = {
     		message.reply("you cannot stare yourself, loser.")
     		setStareCooldown(message.guild.id, a.id, Date.now())
     	} else {
-    		emotes.stare().then(stare => {
-    			const embed = new bot.discord.MessageEmbed()
-    				.setAuthor({ name: `◠ Stare ◡`, iconURL: bot.user.displayAvatarURL() })
-    				.setDescription(`∘∘∘ ${b.displayName} has been stared at by ${a.displayName} ∘∘∘`)
-    				.setImage(stare)
-    			    .setColor(bot.config.embedColor)
-       				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
+    		const embed = new bot.discord.MessageEmbed()
+    			.setAuthor({ name: `◠ Stare ◡`, iconURL: bot.user.displayAvatarURL() })
+    			.setDescription(`∘∘∘ ${b.displayName} has been stared at by ${a.displayName} ∘∘∘`)
+    			.setImage(image)
+    		    .setColor(bot.config.embedColor)
+       			.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
        				
-				message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
-       			setStareCooldown(message.guild.id, a.id, Date.now())
-            })
+			message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
+       		setStareCooldown(message.guild.id, a.id, Date.now())
     	}
     }
 }

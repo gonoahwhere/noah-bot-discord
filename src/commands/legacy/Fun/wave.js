@@ -16,7 +16,7 @@ module.exports = {
     	let a = await message.guild.members.fetch(message.author)
     	let b = await message.guild.members.fetch(message.mentions.users.first())
     	let c = message.mentions.users.first()
-    	
+    	const image = anime.wave()
     	let cooldown = 10000
     	
     	let giver = await getWaveCooldown(message.guild.id, a.id)
@@ -46,17 +46,15 @@ module.exports = {
     		message.reply("you cannot wave yourself, loser.")
     		setWaveCooldown(message.guild.id, a.id, Date.now())
     	} else {
-    		emotes.wave().then(wave => {
-    			const embed = new bot.discord.MessageEmbed()
-    				.setAuthor({ name: `◠ Wave ◡`, iconURL: bot.user.displayAvatarURL() })
-    				.setDescription(`∘∘∘ ${b.displayName} has been waved at by ${a.displayName} ∘∘∘`)
-    				.setImage(wave)
-    			    .setColor(bot.config.embedColor)
-       				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
+    		const embed = new bot.discord.MessageEmbed()
+				.setAuthor({ name: `◠ Wave ◡`, iconURL: bot.user.displayAvatarURL() })
+    			.setDescription(`∘∘∘ ${b.displayName} has been waved at by ${a.displayName} ∘∘∘`)
+    			.setImage(image)
+    		    .setColor(bot.config.embedColor)
+       			.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
        				
-				message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
-       			setWaveCooldown(message.guild.id, a.id, Date.now())
-            })
+			message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
+       		setWaveCooldown(message.guild.id, a.id, Date.now())
     	}
     }
 }

@@ -16,7 +16,7 @@ module.exports = {
     	let a = await message.guild.members.fetch(message.author)
     	let b = await message.guild.members.fetch(message.mentions.users.first())
     	let c = message.mentions.users.first()
-    	
+    	const image = anime.yeet()
     	let cooldown = 10000
     	
     	let giver = await getYeetCooldown(message.guild.id, a.id)
@@ -46,17 +46,15 @@ module.exports = {
     		message.reply("you cannot yeet yourself, loser.")
     		setYeetCooldown(message.guild.id, a.id, Date.now())
     	} else {
-    		emotes.yeet().then(yeet => {
-    			const embed = new bot.discord.MessageEmbed()
-    				.setAuthor({ name: `◠ Yeet ◡`, iconURL: bot.user.displayAvatarURL() })
-    				.setDescription(`∘∘∘ ${b.displayName} has been yeeted by ${a.displayName} ∘∘∘`)
-    				.setImage(yeet)
-    			    .setColor(bot.config.embedColor)
-       				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
+    		const embed = new bot.discord.MessageEmbed()
+				.setAuthor({ name: `◠ Yeet ◡`, iconURL: bot.user.displayAvatarURL() })
+    			.setDescription(`∘∘∘ ${b.displayName} has been yeeted by ${a.displayName} ∘∘∘`)
+    			.setImage(image)
+    		    .setColor(bot.config.embedColor)
+       			.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
        				
-				message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
-       			setYeetCooldown(message.guild.id, a.id, Date.now())
-            })
+			message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
+       		setYeetCooldown(message.guild.id, a.id, Date.now())
     	}
     }
 }

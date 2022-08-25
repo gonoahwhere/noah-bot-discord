@@ -1,6 +1,6 @@
 const { readdirSync } = require("fs");
 const { DateTime } = require("luxon")
-const { getInfoCooldown, setInfoCooldown } = require("../../../utils/functions.js")
+const { getInfoCooldown, setInfoCooldown, getTotalCommandCount } = require("../../../utils/functions.js")
 
 module.exports = {
     name: 'info',
@@ -28,6 +28,10 @@ module.exports = {
         let userNum = bot.users.cache.size
         let commandNum = bot.commands.size
 
+        let totalCommandCountBot = await getTotalCommandCount(message.guild.id);
+
+        if (totalCommandCountBot === null) totalCommandCountBot = 0
+
         const formatServerNum = serverNum => {
             if (serverNum < 1e3) return serverNum;
             if (serverNum >= 1e3 && serverNum < 1e6) return +(serverNum / 1e3).toFixed(1) + "K";
@@ -52,6 +56,14 @@ module.exports = {
             if (commandNum >= 1e12) return + (commandNum / 1e12).toFixed(1) + "T";
         };
 
+        const formatTotalCommandCountBot = totalCommandCountBot => {
+            if (totalCommandCountBot < 1e3) return totalCommandCountBot;
+            if (totalCommandCountBot >= 1e3 && totalCommandCountBot < 1e6) return +(totalCommandCountBot / 1e3).toFixed(1) + "K";
+            if (totalCommandCountBot >= 1e6 && totalCommandCountBot < 1e9) return +(totalCommandCountBot / 1e6).toFixed(1) + "M";
+            if (totalCommandCountBot >= 1e9 && totalCommandCountBot < 1e12) return +(totalCommandCountBot / 1e9).toFixed(1) + "B";
+            if (totalCommandCountBot >= 1e12) return + (totalCommandCountBot / 1e12).toFixed(1) + "T";
+        };
+
         let infoEmbed = new bot.discord.MessageEmbed()
         .setAuthor({ name: `◠ Information ◡`, iconURL: bot.user.displayAvatarURL() })
         .setDescription('∘∘∘ Beep Boop. I am the droid version of sir noah ∘∘∘')
@@ -63,6 +75,7 @@ module.exports = {
             { name: '➳ Edition', value: '`1.0.0`', inline: true },
             { name: '➳ Copies', value: `\`${formatServerNum(serverNum)}\``, inline: true },
             { name: '➳ Parts', value: `\`${formatCommandNum(commandNum)}\``, inline: true},
+            { name: '➳ Total Parts', value: `\`${formatTotalCommandCountBot(totalCommandCountBot)}\``, inline: true},
             { name: '➳ Pong', value: `\`${bot.ws.ping}ms\``, inline: true},
             { name: '➳ Clock', value: `\`${londonDate}\`` + " " + `\`${londonTime}\`` + " " + `\`${londonShort}\``, inline: true}
         )
@@ -93,3 +106,7 @@ module.exports = {
 
     }
 }
+
+//     	if (message.content.startsWith(prefixes)) {
+//		db.add(`commands_${message.author.id}`, 1); //amount a user ran
+//		db.add(`global_commands`, 1); //amount evrryonr on the bot ran altogether
