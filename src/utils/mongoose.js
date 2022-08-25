@@ -8,7 +8,8 @@ module.exports = {
       autoIndex: false,
       poolSize: 5,
       connectTimeoutMS: 10000,
-      family: 4
+      family: 4,
+      keepAlive: true
     };
     
     mongoose.connect(process.env.MongoURI, dbOptions);
