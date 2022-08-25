@@ -2,7 +2,7 @@ const { readdirSync } = require("fs");
 const { DateTime } = require("luxon")
 const { QuickDB } = require('quick.db');
 const db = new QuickDB();
-const { getInfoCooldown, setInfoCooldown, getTotalCommandCountGuild, getTotalCommandCountBot } = require("../../../utils/functions.js")
+const { getInfoCooldown, setInfoCooldown, getTotalCommandCountGuild } = require("../../../utils/functions.js")
 
 module.exports = {
     name: 'info',
@@ -31,7 +31,7 @@ module.exports = {
         let commandNum = bot.commands.size
 
         let totalCommandCountGuild = await getTotalCommandCountGuild(message.guild.id);
-        let totalCommandCountBot = await getTotalCommandCountBot(`totalcommandcountbot`);
+        let totalCommandCountBot = await db.get(`totalcommandcountbot`);
         if (totalCommandCountGuild === null) totalCommandCountGuild = 1
         if (totalCommandCountBot === null) totalCommandCountBot = 1
 

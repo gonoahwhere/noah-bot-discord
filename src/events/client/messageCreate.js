@@ -1,5 +1,5 @@
 const { QuickDB } = require('quick.db');
-const { addTotalCommandCountBot, addTotalCommandCountGuild } = require('../../utils/functions');
+const { addTotalCommandCountGuild } = require('../../utils/functions');
 const db = new QuickDB();
 
 module.exports = {
@@ -19,7 +19,7 @@ module.exports = {
         }
 
         if (message.content.toLowerCase().startsWith(bot.config.botPrefix)) {
-            addTotalCommandCountBot(`totalcommandcountbot`, 1)
+            db.add(`totalcommandcountbot`, 1)
             addTotalCommandCountGuild(message.guild.id, 1)
         }
         await command.run(bot, message, args);
