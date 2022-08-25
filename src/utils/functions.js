@@ -36,6 +36,8 @@ const getHugSlashCooldown = (guildId, userId) => db.get(`userhugslashcooldown_${
 const getInfoSlashCooldown = (guildId, userId) => db.get(`userinfoslashcooldown_${guildId}_${userId}`)
 const getHelpSlashCooldown = (guildId, userId) => db.get(`userhelpslashcooldown_${guildId}_${userId}`)
 
+const getTotalCommandCountGuild = (guildId) => db.get(`totalcommandcountguild_${guildId}`)
+const getTotalCommandCountBot = () => db.get(`totalcommandcountbot_`)
 // db.add()
 
 // db.subtract()
@@ -110,6 +112,9 @@ module.exports = {
     getInfoSlashCooldown,
     getHelpSlashCooldown,
 
+    getTotalCommandCountGuild,
+    getTotalCommandCountBot,
+    
     setBiteCooldown,
     setBlushCooldown,
     setBonkCooldown,
