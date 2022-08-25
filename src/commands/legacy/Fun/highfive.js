@@ -28,7 +28,7 @@ module.exports = {
     		duration = Math.trunc(duration/60)
     		var hrs = duration%60
     		
-    		let remaining = (hrs+"h "+mins+"m "+secs+"s")
+    		let remaining = (secs+"s")
     		
     		message.channel.send(`${a.displayName}, wait **${remaining}** before using \`highfive\`.`)
     	} else if (!args[0]) {
