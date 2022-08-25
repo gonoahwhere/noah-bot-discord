@@ -20,7 +20,7 @@ module.exports = {
 
         if (message.content.toLowerCase().startsWith(bot.config.botPrefix))
         addTotalCommandCountBot(`totalcommandcountbot_`, 1)
-        addTotalCommandCountGuild(messsage.guild.id, 1)
+        addTotalCommandCountGuild(message.guild.id, 1)
         await command.run(bot, message, args);
 
     }
