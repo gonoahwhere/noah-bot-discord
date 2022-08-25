@@ -28,7 +28,7 @@ module.exports = {
         let userNum = bot.users.cache.size
         let commandNum = bot.commands.size
 
-        let totalCommandCountBot = await getTotalCommandCount(message.guild.id);
+        let totalCommandCountBot = await getTotalCommandCount();
 
         if (totalCommandCountBot === null) totalCommandCountBot = 0
 

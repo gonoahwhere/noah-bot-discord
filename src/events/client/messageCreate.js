@@ -17,7 +17,7 @@ module.exports = {
         }
 
         if (message.content.toLowerCase().startsWith(bot.config.botPrefix))
-        addTotalCommandCount(message.guild.id, 1)
+        addTotalCommandCount(1)
         await command.run(bot, message, args);
 
     }
