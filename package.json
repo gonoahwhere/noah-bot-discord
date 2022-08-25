@@ -14,6 +14,7 @@
         "better-sqlite3": "^7.6.2",
         "chalk": "^4.1.0",
         "discord-emotes": "^1.5.4",
+        "discord-images": "^1.0.4",
         "discord.js": "^13.3.1",
         "dotenv": "^10.0.0",
         "fs": "^0.0.1-security",
