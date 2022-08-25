@@ -23,7 +23,8 @@
         "moment": "^2.29.4",
         "mongoose": "^6.5.2",
         "node-fetch": "^2.6.1",
-        "quick.db": "^9.0.6"
+        "quick.db": "^9.0.6",
+        "quickmongo": "^5.1.2"
     },
     "repository": {
         "type": "git",

@@ -1,7 +1,7 @@
 const { readdirSync } = require("fs");
 const { DateTime } = require("luxon")
-const { QuickDB } = require('quick.db');
-const db = new QuickDB();
+const { Database } = require("quickmongo");
+const db = new Database(process.env.MongoURI);
 const { getInfoCooldown, setInfoCooldown, getTotalCommandCountGuild } = require("../../../utils/functions.js")
 
 module.exports = {

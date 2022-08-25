@@ -1,6 +1,6 @@
-const { QuickDB } = require('quick.db');
 const { addTotalCommandCountGuild } = require('../../utils/functions');
-const db = new QuickDB();
+const { Database } = require("quickmongo");
+const db = new Database(process.env.MongoURI);
 
 module.exports = {
     name: 'messageCreate',

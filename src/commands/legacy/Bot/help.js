@@ -1,6 +1,7 @@
 const { readdirSync } = require("fs");
 const { getHelpCooldown, setHelpCooldown } = require("../../../utils/functions.js")
-
+const { Database } = require("quickmongo");
+const db = new Database(process.env.MongoURI);
 // Example of how to make a Help Command
 
 module.exports = {

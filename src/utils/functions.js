@@ -1,5 +1,5 @@
-const { QuickDB } = require('quick.db');
-const db = new QuickDB();
+const { Database } = require("quickmongo");
+const db = new Database(process.env.MongoURI);
 
 // db.fetch()
 const getBiteCooldown = (guildId, userId) => db.get(`userbitecooldown_${guildId}_${userId}`)

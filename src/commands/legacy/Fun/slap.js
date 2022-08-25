@@ -1,5 +1,5 @@
-const { QuickDB } = require('quick.db');
-const db = new QuickDB();
+const { Database } = require("quickmongo");
+const db = new Database(process.env.MongoURI);
 const anime = require("discord-images");
 const { getSlapCooldown, setSlapCooldown } = require("../../../utils/functions.js")
 
