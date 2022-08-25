@@ -63,8 +63,8 @@ module.exports = {
             .setAuthor({ name: `◠ Mechanic Centre [${bot.commands.size}] ◡`, iconURL: bot.user.displayAvatarURL()})
                 .setDescription(`∘∘∘ Beep Boop. Droid of sir noah at your service. How may I help you? ∘∘∘`)
                 .addFields(
-                    { name: '➳ Bot Parts', value: botCommandsList.map((data) => `${data}`).join(", "), inline: true },
-                    { name: '➳ Fun Parts', value: funCommandsList.map((data) => `${data}`).join(", "), inline: true }
+                    { name: `➳ Bot Parts [${botCommandsList.size}]` , value: botCommandsList.map((data) => `${data}`).join(", "), inline: true },
+                    { name: `➳ Fun Parts [${funCommandsList.size}]`, value: funCommandsList.map((data) => `${data}`).join(", "), inline: true }
                 )
                 .setColor(bot.config.embedColor)
                 .setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` });
