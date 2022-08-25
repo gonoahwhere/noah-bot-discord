@@ -1,4 +1,5 @@
-const { addTotalCommandCount } = require("../../utils/functions.js");
+const { QuickDB } = require('quick.db');
+const db = new QuickDB();
 
 module.exports = {
     name: 'messageCreate',
