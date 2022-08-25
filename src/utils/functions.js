@@ -37,11 +37,11 @@ const getInfoSlashCooldown = (guildId, userId) => db.get(`userinfoslashcooldown_
 const getHelpSlashCooldown = (guildId, userId) => db.get(`userhelpslashcooldown_${guildId}_${userId}`)
 
 const getTotalCommandCountGuild = (guildId) => db.get(`totalcommandcountguild_${guildId}`)
-const getTotalCommandCountBot = await db.get(`totalcommandcountbot`)
+const getTotalCommandCountBot = () => db.get(`totalcommandcountbot`)
 
 // db.add()
 const addTotalCommandCountGuild = (guildId, amount) => db.add(`totalcommandcountguild_${guildId}`, amount)
-const addTotalCommandCountBot = await db.add(`totalcommandcountbot`, amount)
+const addTotalCommandCountBot = (amount) => db.add(`totalcommandcountbot`, amount)
 
 // db.subtract()
 
