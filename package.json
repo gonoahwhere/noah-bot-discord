@@ -9,13 +9,12 @@
     },
     "keywords": [],
     "license": "ISC",
-    "type": "module",
     "dependencies": {
         "axios": "^0.21.1",
         "better-sqlite3": "^7.6.2",
         "chalk": "^4.1.0",
         "discord-emotes": "^1.5.4",
-        "discord-images": "^1.0.4",
+        "discord-images": "^1.0.2",
         "discord.js": "^13.3.1",
         "dotenv": "^10.0.0",
         "fs": "^0.0.1-security",
@@ -23,7 +22,7 @@
         "luxon": "^3.0.1",
         "moment": "^2.29.4",
         "mongoose": "^6.5.2",
-        "node-fetch": "2.6.1",
+        "node-fetch": "^2.6.1",
         "quick.db": "^9.0.6"
     },
     "repository": {
