@@ -1,14 +1,14 @@
 const emotes = require("discord-emotes")
 const { QuickDB } = require('quick.db');
 const db = new QuickDB();
-const { getHugCooldown, setHugCooldown } = require("../../../utils/functions.js")
+const { getSmileCooldown, setSmileCooldown } = require("../../../utils/functions.js")
 
 module.exports = {
-    name: 'hug',
-    usage: 'n.hug <user>',
-    aliases: ["hold", "embrace"],
+    name: 'smile',
+    usage: 'n.smile <user>',
+    aliases: ["grin", "twinkle"],
     category: 'Fun',
-    description: 'Give someone a hug.',
+    description: 'Give someone a smile.',
     ownerOnly: false,
     run: async(bot, message, args) => {
     	
@@ -18,7 +18,7 @@ module.exports = {
     	
     	let cooldown = 10000
     	
-    	let giver = await getHugCooldown(message.guild.id, a.id)
+    	let giver = await getSmileCooldown(message.guild.id, a.id)
 
     	if (giver !== null && cooldown - (Date.now() - giver) > 0 ) {
     		let times = cooldown - (Date.now() - giver)
@@ -31,30 +31,30 @@ module.exports = {
     		
     		let remaining = (hrs+"h "+mins+"m "+secs+"s")
     		
-    		message.channel.send(`${a.displayName}, wait **${remaining}** before using \`hug\`.`)
+    		message.channel.send(`${a.displayName}, wait **${remaining}** before using \`smile\`.`)
     	} else if (!args[0]) {
-    		message.reply("you need to mention who you want to hug, bruh")
-    		setHugCooldown(message.guild.id, a.id, Date.now())
+    		message.reply("you need to mention who you want to smile, bruh")
+    		setSmileCooldown(message.guild.id, a.id, Date.now())
     	} else if (args[0] === null) {
     		message.reply("that ain't a valid person, mention a real human bruh.")
-    		setHugCooldown(message.guild.id, a.id, Date.now())
+    		setSmileCooldown(message.guild.id, a.id, Date.now())
     	} else if (c.bot) {
-    		message.reply("you cannot hug a piece of metal, idiot.")
-    		setHugCooldown(message.guild.id, a.id, Date.now())
+    		message.reply("you cannot smile a piece of metal, idiot.")
+    		setSmileCooldown(message.guild.id, a.id, Date.now())
     	} else if (args[0] === message.author) {
-    		message.reply("you cannot hug yourself, loser.")
-    		setHugCooldown(message.guild.id, a.id, Date.now())
+    		message.reply("you cannot smile yourself, loser.")
+    		setSmileCooldown(message.guild.id, a.id, Date.now())
     	} else {
-    		emotes.hug().then(hug => {
+    		emotes.smile().then(smile => {
     			const embed = new bot.discord.MessageEmbed()
-    				.setAuthor({ name: `◠ Hug ◡`, iconURL: bot.user.displayAvatarURL() })
-    				.setDescription(`∘∘∘ ${b.displayName} has been hugged by ${a.displayName} ∘∘∘`)
-    				.setImage(hug)
+    				.setAuthor({ name: `◠ Smile ◡`, iconURL: bot.user.displayAvatarURL() })
+    				.setDescription(`∘∘∘ ${b.displayName} has been smiled at by ${a.displayName} ∘∘∘`)
+    				.setImage(smile)
     			    .setColor(bot.config.embedColor)
        				.setFooter({ text: `${bot.config.embedfooterText}`, iconURL: `${bot.user.displayAvatarURL()}` })
        				
 				message.reply({ allowedMentions: { repliedUser: false }, embeds: [embed] });
-       			setHugCooldown(message.guild.id, a.id, Date.now())
+       			setSmileCooldown(message.guild.id, a.id, Date.now())
             })
     	}
     }
